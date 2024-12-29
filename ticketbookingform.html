@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ticket Booking</title>
+    <style>
+      legend {
+        font-weight: bolder;
+        font-size: larger;
+      }
+      label {
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body bgcolor="beige">
+    <img
+      src="Section1/Movie.png"
+      alt="image"
+      style="height: 40px; float: left; margin-right: 10px"
+    />
+    <h1>Movie Ticket Booking</h1>
+    <marquee direction="left" style="color: red"
+      >Important: Please ensure you carefully review your booking details,
+      including the movie, showtime, and number of tickets before making a
+      purchase. All sales are final, and tickets cannot be refunded or exchanged
+      once the transaction is complete. Please arrive at the theater early to
+      avoid any disruptions, and remember to bring a valid ID for age-restricted
+      films. We appreciate your cooperation and hope you enjoy the
+      show!</marquee
+    >
+    <form>
+      <fieldset>
+        <legend>User Information</legend>
+
+        <label>Name : </label>
+        <input type="text" placeholder="First Name" required />
+        <input type="text" placeholder="Last Name" required />
+        <br /><br />
+        <label>Email : </label>
+        <input type="email" placeholder="sample@email.com" required />
+        <br /><br />
+        <label>Phone Number : </label>
+        <input type="number" placeholder="0000000000" required maxlength="10" />
+        <br /><br />
+        <label>Choose Movie : </label>
+        <br /><br />
+        <input type="radio" name="movie" />
+        <img src="Section1\Baby-John.jpg" alt="Baby John" height="120" />
+        <input type="radio" name="movie" />
+        <img src="Section1/Bagheera.jpg" alt="Bagheera" height="120" />
+        <input type="radio" name="movie" />
+        <img
+          src="Section1\Bhool-Bhulaiyaa-3ss.jpg"
+          alt="Bhool Bhulaiyaa-2"
+          height="120"
+        />
+        <input type="radio" name="movie" />
+        <img src="Section1/Pushpa-2.jpg" alt="Pushpa-2" height="120" />
+        <br /><br />
+        <label>Booking Date : </label>
+        <input type="date" required />
+        <br /><br />
+        <label>Booking Time : </label>
+        <input type="time" required />
+        <br /><br />
+        <label>Choose Ticket Type : </label>
+        <br />
+        <input type="radio" name="tickettype" />Standard
+        <br />
+        <input type="radio" name="tickettype" />VIP <br /><br />
+        <label>Number of Adults : </label>
+        <select>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+          <option>6</option>
+          <option>7</option>
+          <option>9</option>
+          <option>10</option>
+        </select>
+        <br /><br />
+        <label>Number of Children : </label>
+        <select>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+          <option>6</option>
+          <option>7</option>
+          <option>9</option>
+          <option>10</option>
+        </select>
+        <br />
+      </fieldset>
+      <br />
+      <input type="checkbox" />
+      <b>I accept Terms & Conditions : </b>
+      <ul>
+        <li>All ticket sales are final and non-refundable.</li>
+        <li>Changes to bookings are not permitted once purchased.</li>
+        <li>Please verify age restrictions for certain films.</li>
+        <li>Valid ID may be required at entry.</li>
+      </ul>
+
+      <button type="submit">Submit</button>
+      <button type="reset">Reset</button>
+    </form>
+  </body>
+</html>

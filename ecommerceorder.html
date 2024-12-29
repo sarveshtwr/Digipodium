@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ecommerce</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+      .box {
+        position: fixed;
+        left: 20%;
+      }
+      label {
+        color: black;
+        font-weight: 500;
+        font-size: 90%;
+      }
+      legend {
+        font-weight: 800;
+        color: #504f4f;
+      }
+      fieldset {
+        border-width: 5pt;
+        border-color: darkgrey;
+      }
+    </style>
+  </head>
+  <body bgcolor="beige">
+    <h1>E-Commerce Delivery Details</h1>
+    <form>
+      <fieldset>
+        <legend>Your Detail</legend>
+        <label>Name</label>
+        <input class="box" type="text" placeholder="Enter Your Name" required />
+
+        <br /><br />
+        <label>Email</label>
+        <input
+          class="box"
+          type="email"
+          placeholder="sample@email.com"
+          required
+        />
+        <br /><br />
+        <label>Phone Number</label>
+        <input
+          class="box"
+          type="number"
+          placeholder="0000000000"
+          required
+          maxlength="10"
+        />
+      </fieldset>
+      <br />
+      <fieldset>
+        <legend>Delivery Address</legend>
+        <label>Street</label>
+        <input class="box" type="text" placeholder="Street" />
+        <br /><br />
+        <label>City</label>
+        <input class="box" type="text" placeholder="City" />
+        <br /><br />
+        <label>District</label>
+        <input class="box" type="text" placeholder="District" />
+        <br /><br />
+        <label>State</label>
+        <input class="box" type="text" placeholder="State" />
+        <br /><br />
+        <label>Country</label>
+        <input class="box" type="text" placeholder="Country" />
+        <br /><br />
+        <label>Pincode</label>
+        <input class="box" type="number" placeholder="Pincode" />
+      </fieldset>
+      <br />
+      <fieldset>
+        <legend>Card Details</legend>
+        <label></label>
+      </fieldset>
+    </form>
+  </body>
+</html>
