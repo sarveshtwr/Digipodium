@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,regular,italic,500,500italic,700,700italic,900,900italic"
+      rel="stylesheet"
+    />
+    <style>
+      .card {
+        border: 2px solid red;
+        width: 20%;
+        padding: 50px;
+        border-radius: 10px;
+        box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.374);
+        /* X-axis Y-axis Blur Length */
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .brand-title {
+        text-align: center;
+        margin: 20px 0px;
+        font-family: Roboto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h1 class="brand-title">Brand Name</h1>
+      <h3 class="form-title">Login Form</h3>
+
+      <form>
+        <label>Email</label>
+        <input class="text" type="email" />
+
+        <label>Password</label>
+        <input type="password" class="text" />
+
+        <button class="btn">Submit</button>
+      </form>
+    </div>
+  </body>
+</html>
