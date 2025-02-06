@@ -1,9 +1,9 @@
-// Perfect Square   Number.IsInteger
+// Perfect Square Number
 
 let n = 16;
 let f = 0;
 
-for (let i = 1; i * i <= n; i++) {
+for (let i = 2; i * i <= n; i++) {
   if (i * i === n) {
     f = 1;
     break;

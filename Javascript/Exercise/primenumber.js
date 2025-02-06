@@ -2,12 +2,12 @@
 
 let n = 17;
 let f = 0;
-for (let i = 1; i <= n; i++) {
+for (let i = 2; i <= n; i++) {
   if (n % i === 0) {
     f += 1;
   }
 }
-if (f === 2) {
+if (f === 1) {
   console.log(" Given number is prime");
 } else {
   console.log(" Given number is not prime");
