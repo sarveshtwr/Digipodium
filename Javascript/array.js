@@ -28,14 +28,12 @@ console.log(movies.slice(2));
 console.log(movies.slice());
 
 // Addiing and Removing Elements
-movies.push("Lucifer"); // aads new element at the end
-movies.unshift("Star-Wars"); // aads new element at the begining
-
+movies.push("Lucifer"); // add new element at the end
+movies.unshift("Star-Wars"); // add new element at the begining
 console.log(movies);
 
 movies.pop(); // Removes last element
 movies.shift(); // Removes first element
-
 console.log(movies);
 
 //movies.splice(2, 2); //(Starting Element, Numbers of Element to Remove) REMOVING ELEMENT
