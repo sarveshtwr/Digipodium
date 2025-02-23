@@ -1,4 +1,5 @@
 "use client";
+import { IconPencil, IconTrash } from "@tabler/icons-react";
 import React, { useState } from "react";
 
 const Todolist = () => {
@@ -6,21 +7,33 @@ const Todolist = () => {
 
   //const [count, setCount] = useState(1);
 
-  const [taskList, setTaskList] = useState([
-    { text: "Learn React", completed: false },
-    { text: "Learn Express", completed: false },
-    { text: "Learn MongoDB", completed: false },
-  ]);
+  const [taskList, setTaskList] = useState([]);
 
   const addNewTask = (e) => {
     if (e.code === "Enter") {
       console.log(e.target.value);
+
+      const newTask = { text: e.target.value, completed: false };
+      setTaskList([newTask, ...taskList]);
 
       // clear input field
       e.target.value = "";
     }
   };
 
+  const deleteTask = (index) => {
+    console.log(index);
+
+    const temp = taskList;
+    temp.splice(index, 1);
+    setTaskList([...temp]);
+  };
+
+  const toggleTask = (index) => {
+    const temp = taskList;
+    temp[index].completed = !temp[index].completed;
+    setTaskList([...temp]);
+  };
   return (
     <div>
       <div className="container mx-auto py-10">
@@ -33,7 +46,7 @@ const Todolist = () => {
               onKeyDown={addNewTask}
             />
           </div>
-          <div className="p-5">
+          <div className="height-[60vh] p-5 overflow-y-auto">
             {/* <h1 className="text-2xl">{count}</h1>
             <button
               onClick={() => {
@@ -47,14 +60,47 @@ const Todolist = () => {
               return (
                 <div
                   key={index}
-                  className="mb-3 rounded shadow p-4 text-white bg-blue-500"
+                  className="flex justify-between mb-3 rounded shadow p-4 text-white bg-blue-500"
                 >
-                  <p className="font-bold">{task.text}</p>
+                  <div>
+                    {task.completed ? (
+                      <p className="w-fit px-2 text-sm bg-green-500 text-white rounded-full">
+                        Done
+                      </p>
+                    ) : (
+                      <p className="w-fit px-2 text-sm bg-red-500 text-white rounded-full">
+                        Not Done
+                      </p>
+                    )}
+                    <p className="font-bold">{task.text}</p>
+                  </div>
+
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => {
+                        deleteTask(index);
+                      }}
+                      className="bg-white text-red-500 p-2 rounded"
+                    >
+                      <IconTrash />
+                    </button>
+                    <button
+                      onClick={() => {
+                        toggleTask(index);
+                      }}
+                      className="bg-white text-blue-500 p-2 rounded"
+                    >
+                      <IconPencil />
+                    </button>
+                  </div>
                 </div>
               );
             })}
           </div>
         </div>
+        <p className="text-xl font-bold my-6 text-center">
+          {taskList.filter((t) => !t.completed).length} Task Pending{" "}
+        </p>
       </div>
     </div>
   );
