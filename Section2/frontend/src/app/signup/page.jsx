@@ -1,6 +1,15 @@
+"use client";
 import { useFormik } from "formik";
 import React from "react";
+import * as Yup from "yup";
 
+const SignupSchema = Yup.object().shape({
+  name: Yup.string()
+    .min(2, "Too Short!")
+    .max(50, "Too Long!")
+    .required("Naam Nhi Hai Kya Tumhara"),
+  email: Yup.string().email("Invalid email").required("Required"),
+});
 const Signup = () => {
   const signupForm = useFormik({
     initialValues: {
@@ -13,6 +22,7 @@ const Signup = () => {
       console.log(values);
       //send values to backend
     },
+    validationSchema: SignupSchema,
   });
 
   return (
@@ -68,21 +78,22 @@ const Signup = () => {
               Or
             </div>
             {/* Form */}
-            <form>
+            <form onSubmit={signupForm.handleSubmit}>
               <div className="grid gap-y-4">
                 {/* Form Group */}
                 <div>
                   <label
-                    htmlFor="email"
+                    htmlFor="name"
                     className="block text-sm mb-2 dark:text-white"
                   >
-                    Email address
+                    Full Name
                   </label>
                   <div className="relative">
                     <input
-                      type="email"
-                      id="email"
-                      name="email"
+                      type="text"
+                      id="name"
+                      onChange={signupForm.handleChange}
+                      value={signupForm.values.name}
                       className="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
                       required=""
                       aria-describedby="email-error"
@@ -100,13 +111,49 @@ const Signup = () => {
                       </svg>
                     </div>
                   </div>
-                  <p
-                    className="hidden text-xs text-red-600 mt-2"
-                    id="email-error"
+                  {signupForm.errors.name && signupForm.touched.name && (
+                    <p className="text-xs text-red-600 mt-2" id="email-error">
+                      {signupForm.errors.name}
+                    </p>
+                  )}
+                </div>
+                {/* End Form Group */}
+                {/* Form Group */}
+                <div>
+                  <label
+                    htmlFor="email"
+                    className="block text-sm mb-2 dark:text-white"
                   >
-                    Please include a valid email address so we can get back to
-                    you
-                  </p>
+                    Email address
+                  </label>
+                  <div className="relative">
+                    <input
+                      type="email"
+                      id="email"
+                      onChange={signupForm.handleChange}
+                      value={signupForm.values.email}
+                      className="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+                      required=""
+                      aria-describedby="email-error"
+                    />
+                    <div className="hidden absolute inset-y-0 end-0 pointer-events-none pe-3">
+                      <svg
+                        className="size-5 text-red-500"
+                        width={16}
+                        height={16}
+                        fill="currentColor"
+                        viewBox="0 0 16 16"
+                        aria-hidden="true"
+                      >
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
+                      </svg>
+                    </div>
+                  </div>
+                  {signupForm.errors.email && signupForm.touched.email && (
+                    <p className="text-xs text-red-600 mt-2" id="email-error">
+                      {signupForm.errors.email}
+                    </p>
+                  )}
                 </div>
                 {/* End Form Group */}
                 {/* Form Group */}
@@ -121,7 +168,8 @@ const Signup = () => {
                     <input
                       type="password"
                       id="password"
-                      name="password"
+                      onChange={signupForm.handleChange}
+                      value={signupForm.values.password}
                       className="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
                       required=""
                       aria-describedby="password-error"
@@ -139,12 +187,12 @@ const Signup = () => {
                       </svg>
                     </div>
                   </div>
-                  <p
-                    className="hidden text-xs text-red-600 mt-2"
-                    id="password-error"
-                  >
-                    8+ characters required
-                  </p>
+                  {signupForm.errors.password &&
+                    signupForm.touched.password && (
+                      <p className="text-xs text-red-600 mt-2" id="email-error">
+                        {signupForm.errors.password}
+                      </p>
+                    )}
                 </div>
                 {/* End Form Group */}
                 {/* Form Group */}
@@ -158,8 +206,9 @@ const Signup = () => {
                   <div className="relative">
                     <input
                       type="password"
-                      id="confirm-password"
-                      name="confirm-password"
+                      id="confirmPassword"
+                      onChange={signupForm.handleChange}
+                      value={signupForm.values.confirmPassword}
                       className="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
                       required=""
                       aria-describedby="confirm-password-error"
@@ -177,12 +226,12 @@ const Signup = () => {
                       </svg>
                     </div>
                   </div>
-                  <p
-                    className="hidden text-xs text-red-600 mt-2"
-                    id="confirm-password-error"
-                  >
-                    Password does not match the password
-                  </p>
+                  {signupForm.errors.confirmPassword &&
+                    signupForm.touched.confirmPassword && (
+                      <p className="text-xs text-red-600 mt-2" id="email-error">
+                        {signupForm.errors.confirmPassword}
+                      </p>
+                    )}
                 </div>
                 {/* End Form Group */}
                 {/* Checkbox */}
