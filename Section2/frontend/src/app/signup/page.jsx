@@ -9,6 +9,16 @@ const SignupSchema = Yup.object().shape({
     .max(50, "Too Long!")
     .required("Naam Nhi Hai Kya Tumhara"),
   email: Yup.string().email("Invalid email").required("Required"),
+  password: Yup.string()
+    .required("Password is required")
+    .matches(/[a-z]/, "Password must contain lowercase letter")
+    .matches(/[A-Z]/, "Password must contain uppercase letter")
+    .matches(/[0-9]/, "Password must contain number")
+    .matches(/[\W]/, "Password must contain special character")
+    .min(8, "Password must be at least 8 characters"),
+  confirmPassword: Yup.string()
+    .oneOf([Yup.ref("password"), null], "Password must match")
+    .required("Password confirm is required"),
 });
 const Signup = () => {
   const signupForm = useFormik({
