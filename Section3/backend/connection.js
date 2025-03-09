@@ -9,5 +9,8 @@ mongoose
   .then((result) => {
     console.log("connected to db");
   })
-  .catch((err) => {});
-console.log("some other statement");
+  .catch((err) => {
+    console.log("some other statement");
+  });
+
+module.exports = mongoose;
