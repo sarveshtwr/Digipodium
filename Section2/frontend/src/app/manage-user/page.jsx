@@ -17,7 +17,7 @@ const ManageUser = () => {
 
   const deleteUser = (id) => {
     axios
-      .delete("http://localhost5000/user/delete/" + id)
+      .delete("http://localhost:5000/user/delete/" + id)
       .then((result) => {
         toast.success("User Deleted Successfully");
         fetchUserData();
